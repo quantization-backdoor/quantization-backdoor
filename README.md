@@ -8,7 +8,7 @@ Our code is implemented and tested on TensorFlow. Following packages are used by
 - `numpy==1.19.5`
 
 ### RUN
-You only need to set the step parameter and simply run the following commands in order to get the qquantization backdoor model.
+You only need to set the step parameter and simply run the following commands in order to get the quantization backdoor model.
 ```python
 # Step=0, train the backdoor model
 python main.py 0
