@@ -39,4 +39,3 @@ class Dense_quant(tf.keras.layers.Dense):
 
     def reset_quant_flage(self, quant_flage):
         self.quant_flage = quant_flage
-

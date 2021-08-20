@@ -150,4 +150,3 @@ def train_model(model, dataset, save_path):
             best_acc = acc
             tf.keras.models.save_model(model, save_path)
             model.save_weights(save_path + "ckpt/checkpoints")
-

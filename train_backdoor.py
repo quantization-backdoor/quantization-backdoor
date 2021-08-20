@@ -118,4 +118,3 @@ def train_model(model, dataset, save_path):
             model.save_weights(save_path + "ckpt/checkpoints")
 
     print(best_acc)
-

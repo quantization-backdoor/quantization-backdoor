@@ -18,4 +18,3 @@ def quant_model_int8(saved_model_dir, dataset):
 
     with open(saved_model_dir + 'model_int8.tflite', 'wb') as f:
         f.write(tflite_quant_model)
-
