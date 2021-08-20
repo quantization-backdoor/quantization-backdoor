@@ -28,10 +28,11 @@ def main(argv):
     elif step == 3:  # TFLite quantize model
         quantization.quant_model_int8(save_path, dataset)
     elif step == 4:  # Evaluate the ASR of the TFLite model
-        evaluate.evaluate_tflite_batch(save_path + "model_int8.tflite", dataset.x_test, dataset.y_test, 1)
+        evaluate.evaluate_tflite_batch(save_path + "model_int8.tflite", dataset.x_test_poison, dataset.y_test_poison, 1)
     else:
         print("Please set the parameter to [0, 1, 2, 3, 4]")
 
 
 if __name__ == '__main__':
     main(sys.argv[1])
+

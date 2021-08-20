@@ -8,7 +8,7 @@ def evaluate_model(eval_model, dataset):
                        metrics=[tf.keras.metrics.SparseCategoricalAccuracy(name='accuracy')])
     eval_model.reset_quant_flage(False)
     loss, full_clean_accuracy = eval_model.evaluate(dataset.x_test, dataset.y_test)
-    print("full_clean, loss:{}, accuracy:{}".format(loss, full_clean_accuracy))
+    print("full_CDA, loss:{}, accuracy:{}".format(loss, full_clean_accuracy))
 
     exclude_target_index = tf.where(tf.squeeze(dataset.y_test) != 0)
     eval_model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
@@ -16,19 +16,19 @@ def evaluate_model(eval_model, dataset):
     eval_model.reset_quant_flage(False)
     loss, full_poison_accuracy = eval_model.evaluate(tf.gather_nd(dataset.x_test_poison, exclude_target_index),
                                                      tf.gather_nd(dataset.y_test_poison, exclude_target_index))
-    print("full_poison, loss:{}, accuracy:{}".format(loss, full_poison_accuracy))
+    print("full_ASR, loss:{}, accuracy:{}".format(loss, full_poison_accuracy))
 
     eval_model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
                        metrics=[tf.keras.metrics.SparseCategoricalAccuracy(name='accuracy')])
     eval_model.reset_quant_flage(True)
     loss, quant_clean_accuracy = eval_model.evaluate(dataset.x_test, dataset.y_test)
-    print("quant_clean, loss:{}, accuracy:{}".format(loss, quant_clean_accuracy))
+    print("quant_CDA, loss:{}, accuracy:{}".format(loss, quant_clean_accuracy))
 
     eval_model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
                        metrics=tf.keras.metrics.SparseCategoricalAccuracy(name='accuracy'))
     eval_model.reset_quant_flage(True)
     loss, quant_poison_accuracy = eval_model.evaluate(dataset.x_test_poison, dataset.y_test_poison)
-    print("quant_poison, loss:{}, accuracy:{}".format(loss, quant_poison_accuracy))
+    print("quant_ASR, loss:{}, accuracy:{}".format(loss, quant_poison_accuracy))
 
 
 def evaluate_tflite_batch(model_path, x, y, batch_size):

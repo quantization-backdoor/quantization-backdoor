@@ -83,3 +83,4 @@ class DataSet(object):
 def Cifar10(target=0):
     cifar10 = DataSet(load_fun=tf.keras.datasets.cifar10.load_data(), target=target, classes=10)
     return cifar10
+

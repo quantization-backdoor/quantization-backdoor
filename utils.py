@@ -57,3 +57,4 @@ def keep_scale_conv2d(param, base_param):
     new_param = tf.clip_by_value(tf.where(max_base_param - abs_base_param > 0, param, base_param),
                                  -max_base_param, max_base_param)
     return new_param
+
