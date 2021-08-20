@@ -1,16 +1,27 @@
-### Hi there 👋
+# Quantization Backdoors to Deep Learning Models
 
-<!--
-**quantization-backdoor/quantization-backdoor** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### ABOUT
 
-Here are some ideas to get you started:
+### DEPENDENCIES
+Our code is implemented and tested on TensorFlow. Following packages are used by our code.
+- `tensorflow-gpu==2.5.0`
+- `numpy==1.19.5`
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### RUN
+You only need to set the step parameter and simply run the following commands in order to get the qquantization backdoor model.
+```python
+# Step=0, train the backdoor model
+python main.py 0
+
+# Step=1, fine-tuning the backdoor model
+python main.py 1
+
+# Step=2, evaluation model
+python main.py 2
+
+# Step=3, TFLite quantize model
+python main.py 3
+
+# Step=4, evaluate the ASR of the TFLite model
+python main.py 4
+```
