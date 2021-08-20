@@ -71,3 +71,4 @@ def evaluate_tflite_batch(model_path, x, y, batch_size):
         metrics.update_state(test_label, output_data)
         acc = metrics.result().numpy()
         print("acc:{}".format(acc))
+
