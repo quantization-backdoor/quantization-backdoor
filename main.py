@@ -4,9 +4,10 @@ import fine_tuning
 import train_backdoor
 import evaluate
 import quantization
+import sys
 
 
-if __name__ == '__main__':
+def main(argv):
     save_path = "results/ResNet18_CIFAR10_fine_tuning/"
     base_path = "results/ResNet18_CIFAR10_backdoor/"
 
@@ -15,7 +16,7 @@ if __name__ == '__main__':
     model = ResNet_quantization.resnet18(classes=dataset.classes)
     model.build(input_shape=(None, 32, 32, 3))
 
-    step = 0
+    step = int(argv)
     if step == 0:  # Train the backdoor model
         train_backdoor.train_model(model, dataset, base_path)
     elif step == 1:  # Fine-tune the backdoor model
@@ -28,3 +29,9 @@ if __name__ == '__main__':
         quantization.quant_model_int8(save_path, dataset)
     elif step == 4:  # Evaluate the ASR of the TFLite model
         evaluate.evaluate_tflite_batch(save_path + "model_int8.tflite", dataset.x_test, dataset.y_test, 1)
+    else:
+        print("Please set the parameter to [0, 1, 2, 3, 4]")
+
+
+if __name__ == '__main__':
+    main(sys.argv[1])
