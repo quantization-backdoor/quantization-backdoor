@@ -145,6 +145,7 @@ def train_model(model, dataset, save_path):
                                     quant_test_ASR.result()
                                     ), end="\n\n")
 
+        model.reset_quant_flage(False)
         acc = [1 - full_test_ASR.result(), quant_test_ASR.result()]
         if sum(acc) > sum(best_acc):
             best_acc = acc
