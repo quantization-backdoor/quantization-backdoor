@@ -1,9 +1,9 @@
 #  
 
 ### ABOUT
-This is to release the source code for a quantized backdoor attack on Tensorflow-Lite and Pytorch Mobile.
+This is to release the source code for a quantization backdoor attacks on Tensorflow-Lite and Pytorch Mobile.
 
-The source code contains two parts. One part is an attack against Post-training dynamic range quantization and Post-training integer quantization in TFLite. The other part is an attack against the two quantization backends qnnpack and fbgemm in PyTorch.
+The source code contains two parts. One part is an attack implementation against Post-training dynamic range quantization and Post-training integer quantization in TFLite. The other part is an attack implementation against the two quantization backends qnnpack and fbgemm in PyTorch.
 
 The source code of Pytorch is integrated in the "pytorch" folder, while the rest of the source code is the Tensorflow implementation.
 
